@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Login from './components/Login';
+import Register from './components/Register';
+import CreateQuiz from './components/CreateQuiz';
+import AddQuestion from './components/AddQuestion';
+import QuizList from './components/QuizList';
+import Navbar from './components/Navbar';
+import MapView from './components/MapView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" exact component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/create-quiz" component={CreateQuiz} />
+        <Route path="/add-question/:quizId" component={AddQuestion} />
+        <Route path="/quizzes" component={QuizList} />
+        <Route path="/map" component={MapView} />
+      </Routes>
+    </Router>
   );
 }
 
